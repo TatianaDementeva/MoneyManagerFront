@@ -1,15 +1,44 @@
 import React, { Component } from "react";
 import FilterDate from "../filter-date/filter-date";
 import Arrow from "../arrow/arrow";
+import createRequest from "../core/create-request";
+import {
+  fetchCommoditiesByDay,
+  fetchCommoditiesByWeek,
+  fetchCommoditiesByMonth,
+  fetchCommoditiesByYear,
+  fetchAllTags
+} from "../core/api-config";
 
 class ReportExpense extends Component {
   state = {
-    //isLoading: true,
+    isLoading: true,
     activeFilter: "ДЕНЬ",
-    //commodities: [],
-    //tags: [],
+    expenses: [],
+    tags: [],
     today: new Date().getTime() //1544590780430 // new Date().getTime();
   };
+
+  componentDidMount() {
+    const { today } = this.state;
+    let statusTags = false;
+
+    createRequest(fetchAllTags).then(response => {
+      if (response.status === "OK") {
+        this.setState({ tags: response.data });
+        statusTags = true;
+      }
+      console.log("RESPONSE TAGS", response);
+    });
+
+    createRequest(fetchCommoditiesByDay, { date: today }).then(response => {
+      if (response.status === "OK") {
+        this.setState({ isLoading: !statusTags, commodities: response.data });
+      }
+      console.log("RESPONSE COMMODITIES", response);
+    });
+  }
+
   changeFilter = event => {
     const newFilter = event.currentTarget.dataset.filterCode;
     //const { today } = this.state;
@@ -162,24 +191,51 @@ class ReportExpense extends Component {
   };
 
   render() {
-    const { activeFilter } = this.state;
-    return (
-      <div className="report-wrapper">
-        <div className="reports-filters__wrapper">
-          <FilterDate
-            activeFilter={activeFilter}
-            changeFilter={this.changeFilter}
-          />
-          <div className="upravlenie">
-            <div className="right-arrow" onClick={this.changeDateOnLast}>
-              <Arrow rotate="-180.0" strokeWidth="4" stroke="#282e33" />
-            </div>
-            <div className="date">{this.createDateForPrint()}</div>
-            <div className="right-arrow" onClick={this.changeDateOnFuture}>
-              <Arrow rotate="0.0" strokeWidth="4" stroke="#282e33" />
+    const color = [
+      "#83A6ED",
+      "#FFDC58",
+      "#8884D8",
+      "#0088FE",
+      "#00C49F",
+      "#FFBB28",
+      "#FF8042",
+      "#EA5175",
+      "#8DD1E1",
+      "#A4DE6C",
+      "#D0ED57",
+      "#FFC658",
+      "#FF6058",
+      "#8CE3CE",
+      "#FF2800",
+      "#E3004D"
+    ];
+    const { activeFilter, isLoading, expenses } = this.state;
+
+    if (!isLoading) {
+      //const data = this.createTagsArray();
+      return (
+        <div className="report-wrapper">
+          <div className="reports-filters__wrapper">
+            <FilterDate
+              activeFilter={activeFilter}
+              changeFilter={this.changeFilter}
+            />
+            <div className="upravlenie">
+              <div className="right-arrow" onClick={this.changeDateOnLast}>
+                <Arrow rotate="-180.0" strokeWidth="4" stroke="#282e33" />
+              </div>
+              <div className="date">{this.createDateForPrint()}</div>
+              <div className="right-arrow" onClick={this.changeDateOnFuture}>
+                <Arrow rotate="0.0" strokeWidth="4" stroke="#282e33" />
+              </div>
             </div>
           </div>
         </div>
+      );
+    }
+    return (
+      <div className="warning">
+        ПОЖАЛУЙСТА, ПОДОЖДИТЕ ПРОИСХОДИТ ЗАГРУЗКА ДАННЫХ
       </div>
     );
   }
