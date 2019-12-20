@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import FilterDate from "../filter-date/filter-date";
+import Arrow from "../arrow/arrow";
 
 class ReportExpense extends Component {
   state = {
@@ -38,10 +39,21 @@ class ReportExpense extends Component {
     const { activeFilter } = this.state;
     return (
       <div className="report-wrapper">
-        <FilterDate
-          activeFilter={activeFilter}
-          changeFilter={this.changeFilter}
-        />
+        <div className="reports-filters__wrapper">
+          <FilterDate
+            activeFilter={activeFilter}
+            changeFilter={this.changeFilter}
+          />
+          <div className="upravlenie">
+            <div className="right-arrow" /*onClick={this.changeDateOnLast}*/>
+              <Arrow rotate="-180.0" strokeWidth="4" stroke="#282e33" />
+            </div>
+            <div className="date">date</div>
+            <div className="right-arrow">
+              <Arrow rotate="0.0" strokeWidth="4" stroke="#282e33" />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

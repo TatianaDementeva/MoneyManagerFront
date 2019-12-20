@@ -6,20 +6,37 @@
   padding: 15px;
 }
 
-.period__item {
+.upravlenie {
   display: inline-block;
-  width: 100px;
-  border: 1px solid #99a0b2;
-  padding: 5px;
-  text-align: center;
-  cursor: pointer;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
-  color: #373c49;
-  margin: 0 2px;
+  min-width: 364px;
+  height: 50px;
+  margin-left: 250px;
+  vertical-align: bottom;
+  padding-top: 10px;
 }
 
-.period__item_active {
-  color: #fff;
-  background-color: #373c49;
+.right-arrow {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.right-arrow:hover {
+  background-color: #777;
+  stroke: white;
+  //background-color: rgba(96, 106, 117, 0.1);
+}
+
+.date {
+  display: inline-block;
+  position: relative;
+  top: -10px;
+
+  width: 300px;
+
+  text-align: center;
+  font-size: 22px;
+  color: #282e33;
+  font-family: Arial, Helvetica, sans-serif;
 }

@@ -11,10 +11,16 @@ class Header extends Component {
             <option selected disabled>
               Отчёты
             </option>
-            <option>Расходы</option>
+            <option>
+              <NavLink className="button__add" to="/reports/expense">
+                Расходы
+              </NavLink>
+            </option>
             <option>Доходы</option>
           </select>
-          <div className="button__add">+ Добавить</div>
+          <NavLink exact className="button__add" to="/reports/expense">
+            + Добавить
+          </NavLink>
         </header>
       </div>
     );

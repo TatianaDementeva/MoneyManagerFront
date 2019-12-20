@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from '../class-names/class-names';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "../class-names/class-names";
 
 class FiltersDate extends Component {
   static propTypes = {
@@ -11,19 +11,19 @@ class FiltersDate extends Component {
   render() {
     const { activeFilter, changeFilter } = this.props;
     return (
-      <div className="reports-filters__wrapper">
-        <div className="reports-filters">
-          {['ДЕНЬ', 'НЕДЕЛЯ', 'МЕСЯЦ', 'ГОД'].map(item => (
-            <div
-              className={classNames('reports-filters__item', { active: activeFilter === item })}
-              onClick={changeFilter}
-              data-filter-code={item}
-              key={item}
-            >
-              {item}
-            </div>
-          ))}
-        </div>
+      <div className="reports-filters">
+        {["ДЕНЬ", "НЕДЕЛЯ", "МЕСЯЦ", "ГОД"].map(item => (
+          <div
+            className={classNames("reports-filters__item", {
+              active: activeFilter === item
+            })}
+            onClick={changeFilter}
+            data-filter-code={item}
+            key={item}
+          >
+            {item}
+          </div>
+        ))}
       </div>
     );
   }

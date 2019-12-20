@@ -1,9 +1,12 @@
 .reports-filters__wrapper {
   background: #fff;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #99a0b2;
 }
 
 .reports-filters {
   max-width: 1180px;
+  display: inline-block;
   margin: 0 auto;
   height: 50px;
 }
