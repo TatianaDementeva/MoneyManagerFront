@@ -8,7 +8,9 @@ class Header extends Component {
         <header className="header">
           <div className="logo">Money Manager</div>
           <select className="button__report">
-            <option disabled>Отчёты</option>
+            <option selected disabled>
+              Отчёты
+            </option>
             <option>Расходы</option>
             <option>Доходы</option>
           </select>
