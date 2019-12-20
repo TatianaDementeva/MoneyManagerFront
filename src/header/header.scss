@@ -1,0 +1,38 @@
+.header-wrapper {
+  background-color: #fff;
+  border-bottom: 2px solid #f1f2f4;
+}
+
+.header {
+  padding: 10px 0;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: inline-block;
+  //vertical-align: bottom;
+  font-family: "Indie Flower", cursive;
+  color: #004d00;
+  font-size: 40px;
+  width: 400px;
+  //height: 45px;
+  margin: 0;
+  text-align: center;
+}
+
+.button__add {
+  display: inline-block;
+  vertical-align: baseline;
+  margin: 0;
+  width: 130px;
+
+  background-color: green;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+  padding: 5px 0;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Indie Flower", cursive;
+}
