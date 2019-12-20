@@ -122,6 +122,44 @@ class ReportExpense extends Component {
         return "Ошибка при создании даты";
     }
   }
+  changeDateOnLast = () => {
+    const { today, activeFilter } = this.state;
+    switch (activeFilter) {
+      case "ДЕНЬ":
+        this.setState({ today: today - 86400000 });
+        break;
+      case "НЕДЕЛЯ":
+        this.setState({ today: today - 604800000 });
+        break;
+      case "МЕСЯЦ":
+        this.setState({ today: today - 2592000000 });
+        break;
+      case "ГОД":
+        this.setState({ today: today - 31536000000 });
+        break;
+      default:
+        console.log("Uncorrect filter");
+    }
+  };
+  changeDateOnFuture = () => {
+    const { today, activeFilter } = this.state;
+    switch (activeFilter) {
+      case "ДЕНЬ":
+        this.setState({ today: today + 86400000 });
+        break;
+      case "НЕДЕЛЯ":
+        this.setState({ today: today + 604800000 });
+        break;
+      case "МЕСЯЦ":
+        this.setState({ today: today + 2592000000 });
+        break;
+      case "ГОД":
+        this.setState({ today: today + 31536000000 });
+        break;
+      default:
+        console.log("Uncorrect filter");
+    }
+  };
 
   render() {
     const { activeFilter } = this.state;
@@ -133,11 +171,11 @@ class ReportExpense extends Component {
             changeFilter={this.changeFilter}
           />
           <div className="upravlenie">
-            <div className="right-arrow" /*onClick={this.changeDateOnLast}*/>
+            <div className="right-arrow" onClick={this.changeDateOnLast}>
               <Arrow rotate="-180.0" strokeWidth="4" stroke="#282e33" />
             </div>
             <div className="date">{this.createDateForPrint()}</div>
-            <div className="right-arrow">
+            <div className="right-arrow" onClick={this.changeDateOnFuture}>
               <Arrow rotate="0.0" strokeWidth="4" stroke="#282e33" />
             </div>
           </div>
