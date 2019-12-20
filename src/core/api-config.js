@@ -9,22 +9,22 @@ export const createTask = {
 };
 // my api
 export const fetchCommoditiesByDay = {
-  path: "/api/commodities/day/:date",
+  path: "/api/expenses/day/:date",
   method: "GET"
 };
 
 export const fetchCommoditiesByWeek = {
-  path: "/api/commodities/week/:date",
+  path: "/api/expenses/week/:date",
   method: "GET"
 };
 
 export const fetchCommoditiesByMonth = {
-  path: "/api/commodities/month/:date",
+  path: "/api/expenses/month/:date",
   method: "GET"
 };
 
 export const fetchCommoditiesByYear = {
-  path: "/api/commodities/Year/:date",
+  path: "/api/expenses/Year/:date",
   method: "GET"
 };
 

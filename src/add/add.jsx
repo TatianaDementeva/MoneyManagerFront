@@ -68,6 +68,8 @@ class Add extends Component {
             price: priceExpense,
             tag: tagExpense
           }
+        }).then(response => {
+          console.log(response.status);
         });
         this.setState({
           dateExpense: "",

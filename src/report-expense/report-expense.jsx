@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import FilterDate from "../filter-date/filter-date";
 import Arrow from "../arrow/arrow";
+import ListTags from "../list-tags/listTags";
 import createRequest from "../core/create-request";
 import {
   fetchCommoditiesByDay,
@@ -22,23 +23,55 @@ class ReportExpense extends Component {
   componentDidMount() {
     const { today } = this.state;
     let statusTags = false;
-
+    let statusTags2 = true;
     createRequest(fetchAllTags).then(response => {
       if (response.status === "OK") {
         this.setState({ tags: response.data });
-        statusTags = true;
+        statusTags2 = false;
       }
       console.log("RESPONSE TAGS", response);
     });
 
     createRequest(fetchCommoditiesByDay, { date: today }).then(response => {
       if (response.status === "OK") {
-        this.setState({ isLoading: !statusTags, commodities: response.data });
+        this.setState({
+          isLoading: !statusTags & statusTags2,
+          expenses: response.data
+        });
       }
       console.log("RESPONSE COMMODITIES", response);
     });
   }
+  createTagsArray() {
+    const { expenses, tags } = this.state;
+    console.log("Create TAGS expe   ", expenses);
+    if (expenses.length === 0)
+      return [{ name: "Нет добавленных покупок", total: 0, id: 0 }];
 
+    const myCommodities = expenses.reduce(
+      (prevent, current) => ({
+        ...prevent,
+        [current.tag]: (prevent[current.tag] || 0) + current.price
+      }),
+      {}
+    );
+
+    const myTags = tags.reduce(
+      (prevent, current) => ({
+        ...prevent,
+        [current.id]: current.tag
+      }),
+      {}
+    );
+
+    const tagsArray = Object.keys(myCommodities).map(key => ({
+      name: myTags[key],
+      total: myCommodities[key],
+      id: +key
+    }));
+
+    return tagsArray;
+  }
   changeFilter = event => {
     const newFilter = event.currentTarget.dataset.filterCode;
     //const { today } = this.state;
@@ -212,7 +245,7 @@ class ReportExpense extends Component {
     const { activeFilter, isLoading, expenses } = this.state;
 
     if (!isLoading) {
-      //const data = this.createTagsArray();
+      const data = this.createTagsArray();
       return (
         <div className="report-wrapper">
           <div className="reports-filters__wrapper">
@@ -229,6 +262,9 @@ class ReportExpense extends Component {
                 <Arrow rotate="0.0" strokeWidth="4" stroke="#282e33" />
               </div>
             </div>
+          </div>
+          <div className="wrapper">
+            <ListTags data={data} color={color} expenses={expenses} />
           </div>
         </div>
       );

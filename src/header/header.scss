@@ -52,4 +52,44 @@
   color: #fff;
   cursor: pointer;
   font-family: "Indie Flower", cursive;
+  text-decoration: none;
+}
+
+.navigation {
+  display: inline-block;
+  vertical-align: baseline;
+  width: 250px;
+  margin-right: 40px;
+  margin-left: 350px;
+}
+
+.expenses {
+  display: inline-block;
+  vertical-align: baseline;
+  min-width: 100px;
+  padding: 5px;
+  background-color: #e2e6e9;
+  text-align: center;
+  font-size: 20px;
+  color: #373c49;
+  border: 2px solid #99a0b2;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.profits {
+  display: inline-block;
+  vertical-align: baseline;
+  margin-left: 25px;
+  min-width: 100px;
+  padding: 5px;
+  background-color: #e2e6e9;
+  text-align: center;
+  font-size: 20px;
+  color: #373c49;
+  border: 2px solid #99a0b2;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
 }

@@ -7,18 +7,11 @@ class Header extends Component {
       <div className="header-wrapper">
         <header className="header">
           <div className="logo">Money Manager</div>
-          <select className="button__report">
-            <option selected disabled>
-              Отчёты
-            </option>
-            <option>
-              <NavLink className="button__add" to="/reports/expense">
-                Расходы
-              </NavLink>
-            </option>
-            <option>Доходы</option>
-          </select>
-          <NavLink exact className="button__add" to="/reports/expense">
+          <nav className="navigation">
+            <NavLink className="expenses" to="/reports/expense">Расходы</NavLink>
+            <NavLink className="profits" to="/reports/expense">Доходы</NavLink>
+          </nav>
+          <NavLink exact className="button__add" to="/">
             + Добавить
           </NavLink>
         </header>
