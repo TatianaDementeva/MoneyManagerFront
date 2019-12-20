@@ -5,10 +5,10 @@ import Arrow from "../arrow/arrow";
 class ReportExpense extends Component {
   state = {
     //isLoading: true,
-    activeFilter: "ДЕНЬ"
+    activeFilter: "ДЕНЬ",
     //commodities: [],
     //tags: [],
-    //today: new Date().getTime() //1544590780430 // new Date().getTime();
+    today: new Date().getTime() //1544590780430 // new Date().getTime();
   };
   changeFilter = event => {
     const newFilter = event.currentTarget.dataset.filterCode;
@@ -35,6 +35,94 @@ class ReportExpense extends Component {
         console.log("Section is under development");
     }
   };
+  createDate = time => {
+    let day = time.getDate();
+    if (toString(day).length === 1) day = `0${day}`;
+
+    let month = time.getMonth();
+    month += 1;
+    if (toString(month).length === 1) month = `0${month}`;
+
+    const date = `${day}.${month}.${time.getFullYear()}`;
+    return date;
+  };
+  createDateForPrint() {
+    const { activeFilter, today } = this.state;
+    const toD = new Date(today);
+
+    switch (activeFilter) {
+      case "ДЕНЬ": {
+        return this.createDate(toD);
+      }
+
+      case "НЕДЕЛЯ": {
+        toD.setHours(0, 0, 0, 0);
+
+        const week = toD.getDay();
+
+        let startDay;
+
+        if (week === 0) {
+          startDay = toD - 6 * 86400000;
+        } else startDay = toD.getTime() - (week - 1) * 86400000;
+
+        startDay = this.createDate(new Date(startDay));
+        let endDay = toD.getTime() + ((7 - week + 1) % 7) * 86400000;
+        endDay = this.createDate(new Date(endDay));
+
+        return `${startDay}-${endDay}`;
+      }
+      case "МЕСЯЦ": {
+        let month = toD.getMonth();
+        switch (month) {
+          case 0:
+            month = "Январь";
+            break;
+          case 1:
+            month = "Февраль";
+            break;
+          case 2:
+            month = "Март";
+            break;
+          case 3:
+            month = "Апрель";
+            break;
+          case 4:
+            month = "Май";
+            break;
+          case 5:
+            month = "Июнь";
+            break;
+          case 6:
+            month = "Июль";
+            break;
+          case 7:
+            month = "Август";
+            break;
+          case 8:
+            month = "Сентябрь";
+            break;
+          case 9:
+            month = "Октябрь";
+            break;
+          case 10:
+            month = "Ноябрь";
+            break;
+          case 11:
+            month = "Декабрь";
+            break;
+          default:
+            month = "Ошибка при определении месяца";
+        }
+        return month;
+      }
+      case "ГОД":
+        return `${toD.getFullYear()}`;
+      default:
+        return "Ошибка при создании даты";
+    }
+  }
+
   render() {
     const { activeFilter } = this.state;
     return (
@@ -48,7 +136,7 @@ class ReportExpense extends Component {
             <div className="right-arrow" /*onClick={this.changeDateOnLast}*/>
               <Arrow rotate="-180.0" strokeWidth="4" stroke="#282e33" />
             </div>
-            <div className="date">date</div>
+            <div className="date">{this.createDateForPrint()}</div>
             <div className="right-arrow">
               <Arrow rotate="0.0" strokeWidth="4" stroke="#282e33" />
             </div>
