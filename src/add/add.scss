@@ -1,0 +1,21 @@
+.wrapper {
+  margin: 30px auto;
+  max-width: 1180px;
+  background-color: #fff;
+  border: 1px solid #e2e4e9;
+  padding: 15px;
+}
+
+.add-header {
+  padding: 15px 5px;
+  border-bottom: 2px solid #99a0b2;
+}
+
+.add-header__name {
+  display: inline-block;
+  width: 565px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  color: #373c49;
+}
