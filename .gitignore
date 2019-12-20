@@ -1,0 +1,5 @@
+node_modules/
+.eslintrc.js
+.stylelintrc.js
+.scannerwork
+sonar-scanner-4.2.0.1873-windows/

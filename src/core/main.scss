@@ -1,0 +1,15 @@
+@import "../header/header.scss";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background: #f6f7f8;
+
+  font-size: 18px;
+  font-weight: bold;
+}
