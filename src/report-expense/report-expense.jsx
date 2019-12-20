@@ -67,7 +67,7 @@ class ReportExpense extends Component {
         } else startDay = toD.getTime() - (week - 1) * 86400000;
 
         startDay = this.createDate(new Date(startDay));
-        let endDay = toD.getTime() + ((7 - week + 1) % 7) * 86400000;
+        let endDay = toD.getTime() + ((7 - week) % 7) * 86400000;
         endDay = this.createDate(new Date(endDay));
 
         return `${startDay}-${endDay}`;
