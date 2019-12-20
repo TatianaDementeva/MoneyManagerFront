@@ -21,6 +21,22 @@
   text-align: center;
 }
 
+.button__report {
+  display: inline-block;
+  vertical-align: baseline;
+  margin: 0;
+  width: 130px;
+  background-color: #e2e6e9;
+  border: none;
+  padding: 5px 15px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+  font-family: "Indie Flower", cursive;
+  margin-right: 30px;
+  margin-left: 450px;
+}
+
 .button__add {
   display: inline-block;
   vertical-align: baseline;

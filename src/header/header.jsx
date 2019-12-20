@@ -7,7 +7,11 @@ class Header extends Component {
       <div className="header-wrapper">
         <header className="header">
           <div className="logo">Money Manager</div>
-
+          <select className="button__report">
+            <option disabled>Отчёты</option>
+            <option>Расходы</option>
+            <option>Доходы</option>
+          </select>
           <div className="button__add">+ Добавить</div>
         </header>
       </div>
