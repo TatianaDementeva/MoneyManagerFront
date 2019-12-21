@@ -1,7 +1,6 @@
-import React, { Component, createRef } from "react";
+import React, { Component } from "react";
 import createRequest from "../core/create-request";
 import { fetchAllTags, createCommidity } from "../core/api-config";
-import { NavLink } from "react-router-dom";
 
 class Add extends Component {
   state = {
@@ -44,9 +43,9 @@ class Add extends Component {
       tagExpense,
       nameExpense,
       dateExpense,
-      priceExpense,
-      nameProfit,
-      priceProfit
+      priceExpense
+      //nameProfit,
+      //priceProfit
     } = this.state;
 
     event.preventDefault();
@@ -107,9 +106,9 @@ class Add extends Component {
     const {
       tags,
       nameExpense,
-      priceExpense,
-      nameProfit,
-      priceProfit
+      priceExpense
+      // nameProfit,
+      //priceProfit
     } = this.state;
     return (
       <div className="wrapper">

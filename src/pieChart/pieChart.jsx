@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
-import {
-  PieChart, Pie, Cell, Sector
-} from 'recharts';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import { PieChart, Pie, Cell, Sector } from "recharts";
+import PropTypes from "prop-types";
 
-const renderActiveShape = (props) => {
+const renderActiveShape = props => {
   const RADIAN = Math.PI / 180;
   const {
     cx,
@@ -27,7 +25,7 @@ const renderActiveShape = (props) => {
   const my = cy + (outerRadius + 15) * sin;
   const ex = mx + (cos >= 0 ? 1 : -1) * 22;
   const ey = my;
-  const textAnchor = cos >= 0 ? 'start' : 'end';
+  const textAnchor = cos >= 0 ? "start" : "end";
 
   return (
     <g>
@@ -52,12 +50,27 @@ const renderActiveShape = (props) => {
         outerRadius={outerRadius + 10}
         fill={fill}
       />
-      <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
+      <path
+        d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`}
+        stroke={fill}
+        fill="none"
+      />
       <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
-      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">
+      <text
+        x={ex + (cos >= 0 ? 1 : -1) * 12}
+        y={ey}
+        textAnchor={textAnchor}
+        fill="#333"
+      >
         {`Сумма ${value.toFixed(2)}`}
       </text>
-      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#999">
+      <text
+        x={ex + (cos >= 0 ? 1 : -1) * 12}
+        y={ey}
+        dy={18}
+        textAnchor={textAnchor}
+        fill="#999"
+      >
         {`(${(percent * 100).toFixed(2)}%)`}
       </text>
     </g>
@@ -76,16 +89,18 @@ renderActiveShape.propTypes = {
   percent: PropTypes.number.isRequired,
   value: PropTypes.string.isRequired
 };
-export default class Chart extends Component {
+export default class MyPieChart extends Component {
   state = {
     activeIndex: 0
   };
 
   static propTypes = {
-    data: PropTypes.arrayOf(PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      total: PropTypes.number.isRequired
-    })).isRequired,
+    data: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        total: PropTypes.number.isRequired
+      })
+    ).isRequired,
     color: PropTypes.arrayOf(PropTypes.string).isRequired
   };
 

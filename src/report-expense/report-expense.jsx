@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import FilterDate from "../filter-date/filter-date";
+import FilterDate from "../filtersDate/filtersDate";
 import Arrow from "../arrow/arrow";
 import ListTags from "../list-tags/listTags";
-import Chart from '../pieChart/pieChart';
+import MyPieChart from "../pieChart/pieChart";
 import createRequest from "../core/create-request";
 import {
   fetchCommoditiesByDay,
@@ -392,7 +392,7 @@ class ReportExpense extends Component {
           </div>
           <div className="wrapper">
             <ListTags data={data} color={color} expenses={expenses} />
-            <Chart data={data} color={color} />
+            <MyPieChart data={data} color={color} />
           </div>
         </div>
       );
