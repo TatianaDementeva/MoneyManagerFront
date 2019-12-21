@@ -8,8 +8,9 @@ class Header extends Component {
         <header className="header">
           <div className="logo">Money Manager</div>
           <nav className="navigation">
-            <NavLink className="expenses" to="/reports/expense">Расходы</NavLink>
-            <NavLink className="profits" to="/reports/expense">Доходы</NavLink>
+            <NavLink className="expenses" to="/reports/expense">
+              Расходы
+            </NavLink>
           </nav>
           <NavLink exact className="button__add" to="/">
             + Добавить

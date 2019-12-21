@@ -115,7 +115,6 @@ class Add extends Component {
       <div className="wrapper">
         <div className="add-header">
           <div className="add-header__name">Покупка</div>
-          <div className="add-header__name">Доход</div>
         </div>
         <div className="add-expense">
           <form
@@ -166,44 +165,6 @@ class Add extends Component {
               className="add-commodities__button"
               type="submit"
               name="Expense"
-              value="Добавить"
-            />
-          </form>
-        </div>
-        <div className="add-expense">
-          <form
-            className="add-commodities"
-            onSubmit={this.onSubmit}
-            name="Profit"
-          >
-            <input
-              className="add-commodities__name"
-              type="date"
-              name="dateProfit"
-              placeholder="Дата: дд.мм.гггг"
-              onChange={this.handleInputChange}
-            />
-            <input
-              className="add-commodities__name"
-              type="text"
-              name="nameProfit"
-              placeholder="Доход"
-              value={nameProfit}
-              onChange={this.handleInputChange}
-            />
-            <input
-              className="add-commodities__price"
-              type="number"
-              min="1"
-              name="priceProfit"
-              placeholder="Сумма"
-              value={priceProfit}
-              onChange={this.handleInputChange}
-            />
-            <input
-              className="add-commodities__button"
-              type="submit"
-              name="Profit"
               value="Добавить"
             />
           </form>

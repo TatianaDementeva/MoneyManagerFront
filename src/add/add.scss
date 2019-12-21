@@ -12,19 +12,20 @@
 }
 
 .add-header__name {
-  display: inline-block;
+  //display: inline-block;
   width: 573px;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 25px;
   color: #373c49;
+  margin: 0 auto;
 }
 
 .add-expense {
-  display: inline-block;
+  //display: inline-block;
   width: 529px;
   height: 75vh;
-  margin: 35px 20px;
+  margin: 35px auto;
   border: 2px solid #99a0b2;
   border-radius: 5px;
 }
