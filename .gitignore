@@ -3,4 +3,4 @@ node_modules/
 .stylelintrc.js
 .scannerwork
 sonar-scanner-4.2.0.1873-windows/
-Command for sonar
+Command for sonar.txt
