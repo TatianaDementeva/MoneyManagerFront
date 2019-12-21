@@ -34,6 +34,6 @@ export const fetchAllTags = {
 };
 
 export const createCommidity = {
-  path: "/api/expense",
+  path: "/api/expenses",
   method: "POST"
 };

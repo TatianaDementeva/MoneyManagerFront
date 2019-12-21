@@ -62,7 +62,7 @@ class Add extends Component {
       ) {
         console.log("All fields not null ");
         createRequest(createCommidity, null, {
-          commodity: {
+          expense: {
             date: dateExpense,
             name: nameExpense,
             price: priceExpense,

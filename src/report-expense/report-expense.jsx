@@ -46,7 +46,7 @@ class ReportExpense extends Component {
     const { expenses, tags } = this.state;
     console.log("Create TAGS expe   ", expenses);
     if (expenses.length === 0)
-      return [{ name: "Нет добавленных покупок", total: 0, id: 0 }];
+      return [{ name: "Нет покупок", total: 0, id: 0 }];
 
     const myCommodities = expenses.reduce(
       (prevent, current) => ({
@@ -74,24 +74,62 @@ class ReportExpense extends Component {
   }
   changeFilter = event => {
     const newFilter = event.currentTarget.dataset.filterCode;
-    //const { today } = this.state;
+    const { today } = this.state;
 
     switch (newFilter) {
       case "ДЕНЬ":
-        this.setState({ activeFilter: "ДЕНЬ" });
-        console.log("Day");
+        createRequest(fetchCommoditiesByDay, { date: today }).then(response => {
+          if (response.status === "OK") {
+            this.setState({
+              isLoading: false,
+              expenses: response.data,
+              activeFilter: "ДЕНЬ"
+            });
+          }
+          console.log("RESPONSE COMMODITIES", response);
+        });
         break;
       case "НЕДЕЛЯ":
-        this.setState({ activeFilter: "НЕДЕЛЯ" });
-        console.log("Week");
+        createRequest(fetchCommoditiesByWeek, { date: today }).then(
+          response => {
+            if (response.status === "OK") {
+              this.setState({
+                isLoading: false,
+                expenses: response.data,
+                activeFilter: newFilter
+              });
+            }
+            console.log("RESPONSE COMMODITIES", response);
+          }
+        );
         break;
       case "МЕСЯЦ":
-        this.setState({ activeFilter: "МЕСЯЦ" });
-        console.log("Month");
+        createRequest(fetchCommoditiesByMonth, { date: today }).then(
+          response => {
+            if (response.status === "OK") {
+              this.setState({
+                isLoading: false,
+                expenses: response.data,
+                activeFilter: newFilter
+              });
+            }
+            console.log("RESPONSE COMMODITIES", response);
+          }
+        );
         break;
       case "ГОД":
-        this.setState({ activeFilter: "ГОД" });
-        console.log("Year");
+        createRequest(fetchCommoditiesByYear, { date: today }).then(
+          response => {
+            if (response.status === "OK") {
+              this.setState({
+                isLoading: false,
+                expenses: response.data,
+                activeFilter: newFilter
+              });
+            }
+            console.log("RESPONSE COMMODITIES", response);
+          }
+        );
         break;
       default:
         console.log("Section is under development");
@@ -188,16 +226,60 @@ class ReportExpense extends Component {
     const { today, activeFilter } = this.state;
     switch (activeFilter) {
       case "ДЕНЬ":
-        this.setState({ today: today - 86400000 });
+        createRequest(fetchCommoditiesByDay, { date: today - 86400000 }).then(
+          response => {
+            if (response.status === "OK") {
+              this.setState({
+                isLoading: false,
+                expenses: response.data,
+                today: today - 86400000
+              });
+            }
+            console.log("RESPONSE COMMODITIES", response);
+          }
+        );
         break;
       case "НЕДЕЛЯ":
-        this.setState({ today: today - 604800000 });
+        createRequest(fetchCommoditiesByWeek, { date: today - 604800000 }).then(
+          response => {
+            if (response.status === "OK") {
+              this.setState({
+                isLoading: false,
+                expenses: response.data,
+                today: today - 604800000
+              });
+            }
+            console.log("RESPONSE COMMODITIES", response);
+          }
+        );
         break;
       case "МЕСЯЦ":
-        this.setState({ today: today - 2592000000 });
+        createRequest(fetchCommoditiesByMonth, {
+          date: today - 2592000000
+        }).then(response => {
+          if (response.status === "OK") {
+            this.setState({
+              isLoading: false,
+              expenses: response.data,
+              today: today - 2592000000
+            });
+          }
+          console.log("RESPONSE COMMODITIES", response);
+        });
         break;
       case "ГОД":
-        this.setState({ today: today - 31536000000 });
+        createRequest(fetchCommoditiesByYear, {
+          date: today - 31536000000
+        }).then(response => {
+          if (response.status === "OK") {
+            this.setState({
+              isLoading: false,
+              expenses: response.data,
+              today: today - 31536000000
+            });
+          }
+          console.log("RESPONSE COMMODITIES", response);
+        });
         break;
       default:
         console.log("Uncorrect filter");
@@ -207,16 +289,60 @@ class ReportExpense extends Component {
     const { today, activeFilter } = this.state;
     switch (activeFilter) {
       case "ДЕНЬ":
-        this.setState({ today: today + 86400000 });
+        createRequest(fetchCommoditiesByDay, { date: today + 86400000 }).then(
+          response => {
+            if (response.status === "OK") {
+              this.setState({
+                isLoading: false,
+                expenses: response.data,
+                today: today + 86400000
+              });
+            }
+            console.log("RESPONSE COMMODITIES", response);
+          }
+        );
         break;
       case "НЕДЕЛЯ":
-        this.setState({ today: today + 604800000 });
+        createRequest(fetchCommoditiesByWeek, { date: today + 604800000 }).then(
+          response => {
+            if (response.status === "OK") {
+              this.setState({
+                isLoading: false,
+                expenses: response.data,
+                today: today + 604800000
+              });
+            }
+            console.log("RESPONSE COMMODITIES", response);
+          }
+        );
         break;
       case "МЕСЯЦ":
-        this.setState({ today: today + 2592000000 });
+        createRequest(fetchCommoditiesByMonth, {
+          date: today + 2592000000
+        }).then(response => {
+          if (response.status === "OK") {
+            this.setState({
+              isLoading: false,
+              expenses: response.data,
+              today: today + 2592000000
+            });
+          }
+          console.log("RESPONSE COMMODITIES", response);
+        });
         break;
       case "ГОД":
-        this.setState({ today: today + 31536000000 });
+        createRequest(fetchCommoditiesByYear, {
+          date: today + 31536000000
+        }).then(response => {
+          if (response.status === "OK") {
+            this.setState({
+              isLoading: false,
+              expenses: response.data,
+              today: today + 31536000000
+            });
+          }
+          console.log("RESPONSE COMMODITIES", response);
+        });
         break;
       default:
         console.log("Uncorrect filter");
